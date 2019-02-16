@@ -1,0 +1,14 @@
+{
+  "name": "curry",
+  "version": "1.0.0",
+  "description": "curry function",
+  "main": "curry.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "author": "Po Chun, Lu",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  }
+}
