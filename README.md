@@ -83,7 +83,7 @@
 ### Function
 
 * [ ] [compose-function](https://github.com/stoeffel/compose-function) - Compose a new function from smaller functions `f(g(x))`.
-* [ ] [curry](https://github.com/dominictarr/curry) - A curry function without anything too clever.
+* [x] [curry](https://github.com/dominictarr/curry) - A curry function without anything too clever.
 * [ ] [once](https://github.com/isaacs/once) - Run a function exactly one time.
 * [ ] [deep-bind](https://github.com/jonschlinkert/deep-bind) - Bind a context to all functions in an object, including deeply nested functions.
 * [ ] [identity-function](https://github.com/substack/identity-function) - Always return the input argument. 
