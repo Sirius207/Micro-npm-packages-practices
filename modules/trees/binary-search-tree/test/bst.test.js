@@ -40,25 +40,23 @@ describe('Binary Search Tree', () => {
       assertTreeValuesEqual(tree, [1]);
     });
     it('should insert two nodes', () => {
-      tree.insert(1);
       tree.insert(2);
-      assertTreeValuesEqual(tree, [1, 2]);
+      tree.insert(1);
+      assertTreeValuesEqual(tree, [2, 1]);
     });
     it('should insert multiple nodes', () => {
-      tree.insert(1);
       tree.insert(2);
-      tree.insert(3);
-      tree.insert(4);
+      tree.insert(1);
       tree.insert(5);
-      assertTreeValuesEqual(tree, [1, 2, 3, 4, 5]);
+      tree.insert(4);
+      tree.insert(3);
+      assertTreeValuesEqual(tree, [2, 1, 5, 4, 3]);
     });
   });
-
   // TODO
   // it('should remove success', () => {});
 
   // it('should find success', () => {});
 
   // it('should clear success', () => {});
-
 });

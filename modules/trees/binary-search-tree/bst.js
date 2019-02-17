@@ -5,7 +5,33 @@ class Node {
     this.right = null;
   }
 
-  insert(value) {}
+  insert(value) {
+    if (!this.value) {
+      this.value = value;
+    } else {
+      const newNode = new Node(value);
+      let current = this;
+      while (current) {
+        if (value < current.value) {
+          if (current.left) {
+            current = current.left;
+          } else {
+            current.left = newNode;
+            break;
+          }
+        } else if (value >= current.value) {
+          if (current.right) {
+            current = current.right;
+          } else {
+            current.right = newNode;
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+    }
+  }
 
   remove() {}
   // returns null if given value does not exist in the tree
@@ -14,7 +40,7 @@ class Node {
   clear() {}
 
   getPreOrder() {
-    let elements = [];
+    const elements = [];
     function traverse(node) {
       elements.push(node.value);
       if (node.left) {
@@ -28,7 +54,7 @@ class Node {
     traverse(this);
     return elements;
   }
-
+  getInOrder() {}
   getPostOrder() {}
   getLevelOrder() {}
   // prints the values in the tree, from min to max
