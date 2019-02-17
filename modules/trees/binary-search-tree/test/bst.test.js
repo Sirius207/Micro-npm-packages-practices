@@ -34,11 +34,27 @@ describe('Binary Search Tree', () => {
     });
   });
 
-  // TODO
-  // describe('Insertion', () => {
-  //   it('should insert success', () => {});
-  // });
+  describe('Insertion', () => {
+    it('should insert one node', () => {
+      tree.insert(1);
+      assertTreeValuesEqual(tree, [1]);
+    });
+    it('should insert two nodes', () => {
+      tree.insert(1);
+      tree.insert(2);
+      assertTreeValuesEqual(tree, [1, 2]);
+    });
+    it('should insert multiple nodes', () => {
+      tree.insert(1);
+      tree.insert(2);
+      tree.insert(3);
+      tree.insert(4);
+      tree.insert(5);
+      assertTreeValuesEqual(tree, [1, 2, 3, 4, 5]);
+    });
+  });
 
+  // TODO
   // it('should remove success', () => {});
 
   // it('should find success', () => {});
