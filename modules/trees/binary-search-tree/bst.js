@@ -1,33 +1,54 @@
 class Node {
-  constructor(data) {
-    this.data = data;
+  constructor(value) {
+    this.value = value;
     this.left = null;
     this.right = null;
   }
 
-  insert() {}
-  remove() {}
+  insert(value) {}
 
+  remove() {}
+  // returns null if given value does not exist in the tree
+  find() {}
+  // remove all nodes from the tree
+  clear() {}
+
+  getPreOrder() {
+    let elements = [];
+    function traverse(node) {
+      elements.push(node.value);
+      if (node.left) {
+        traverse(node.left);
+      }
+      if (node.right) {
+        traverse(node.right);
+      }
+      return elements;
+    }
+    traverse(this);
+    return elements;
+  }
+
+  getPostOrder() {}
+  getLevelOrder() {}
   // prints the values in the tree, from min to max
-  printValues() {}
-  printPreOrder() {}
-  printPostOrder() {}
-  delete_tree() {}
-  // returns true if given value exists in the tree
-  isInTree() {}
+  getSortValues() {}
 
   // get count of values stored
-  getNodeCount() {}
-
+  size() {}
   // returns the height in nodes (single node's height is 1)
-  getHeight() {}
+  height() {}
   // returns the minimum value stored in the tree
   getMinNode() {}
   // returns the maximum value stored in the tree
   getMaxNode() {}
+
   isBinarySearchTree() {}
   // returns next-highest value in tree after given value, -1 if none
   getSuccessor() {}
+
+  // calls function f on each node's data
+  each() {}
 }
 
 module.exports = Node;
