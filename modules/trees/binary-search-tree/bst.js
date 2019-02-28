@@ -34,19 +34,22 @@ class Node {
   }
 
   remove() {}
+
   // returns null if given value does not exist in the tree
   find() {}
+
   // remove all nodes from the tree
   clear() {}
 
+  /*
+   * Orders
+   */
   getPreOrder() {
     const elements = [];
     function traverse(node) {
-      elements.push(node.value);
-      if (node.left) {
+      if (node) {
+        elements.push(node.value);
         traverse(node.left);
-      }
-      if (node.right) {
         traverse(node.right);
       }
       return elements;
@@ -54,6 +57,7 @@ class Node {
     traverse(this);
     return elements;
   }
+
   getInOrder() {}
   getPostOrder() {}
   getLevelOrder() {}
