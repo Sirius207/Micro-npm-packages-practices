@@ -33,7 +33,36 @@ class Node {
     }
   }
 
-  remove() {}
+  _removeOnlyOneLeaf(value) {
+    if (!this.left && !this.right) {
+      this.value = null;
+    } else if (this.left && !this.right) {
+      this.value = this.left.value;
+      this.left = null;
+    } else if (!this.left && this.right) {
+      this.value = this.right.value;
+      this.right = null;
+    }
+  }
+
+  _removeTwoLeaf(value) {
+
+  }
+
+  // remove(value) {
+  //   if (!this.value) {
+  //     return this;
+  //   }
+  //   if (this.value < value) {
+  //     this.right.remove(value);
+  //   } else if (this.value > value) {
+  //     this.left.remove(value);
+  //   } else if (this.left && this.right) {
+  //     this._removeTwoLeaf(value);
+  //   } else {
+  //     this._removeOnlyOneLeaf(value);
+  //   }
+  // }
 
   // returns null if given value does not exist in the tree
   find() {}
@@ -69,9 +98,13 @@ class Node {
   // returns the height in nodes (single node's height is 1)
   height() {}
   // returns the minimum value stored in the tree
-  getMinNode() {}
+  getMinNode() {
+    return (this.left) ? this.left.getMinNode() : this;
+  }
   // returns the maximum value stored in the tree
-  getMaxNode() {}
+  getMaxNode() {
+    return (this.right) ? this.right.getMaxNode() : this;
+  }
 
   isBinarySearchTree() {}
   // returns next-highest value in tree after given value, -1 if none

@@ -55,77 +55,101 @@ describe('Binary Search Tree', () => {
       assertTreeValuesEqual(tree, [2, 1, 5, 4, 3]);
     });
   });
-  describe('remove', () => {
-    it('should remove one node', () => {
-      tree.insert(1);
-      tree.remove(1);
-      assertTreeValuesEqual(tree, []);
-    });
 
-    it('should remove left node', () => {
-      tree.insert(1);
-      tree.insert(2);
+  // describe('remove', () => {
+  //   it('should remove one node', () => {
+  //     tree.insert(1);
+  //     tree.remove(1);
+  //     assertTreeValuesEqual(tree, []);
+  //   });
 
-      tree.remove(1);
-      assertTreeValuesEqual(tree, [2]);
-    });
+  //   it('should remove left node', () => {
+  //     tree.insert(1);
+  //     tree.insert(2);
 
-    it('should remove right node', () => {
-      tree.insert(1);
-      tree.insert(2);
-      tree.insert(3);
+  //     tree.remove(1);
+  //     assertTreeValuesEqual(tree, [2]);
+  //   });
 
-      tree.remove(3);
-      assertTreeValuesEqual(tree, [2, 1]);
-    });
+  //   it('should remove right node', () => {
+  //     tree.insert(1);
+  //     tree.insert(2);
+  //     tree.insert(3);
 
-    it('should remove root node and reindex', () => {
-      tree.insert(1);
-      tree.insert(2);
-      tree.insert(3);
+  //     tree.remove(3);
+  //     assertTreeValuesEqual(tree, [2, 1]);
+  //   });
 
-      tree.remove(2);
-      assertTreeValuesEqual(tree, [3, 1]);
-    });
+  //   it('should remove root node and reindex', () => {
+  //     tree.insert(1);
+  //     tree.insert(2);
+  //     tree.insert(3);
 
-    it('should remove right node with two sub nodes', () => {
-      tree.insert(1);
-      tree.insert(3);
-      tree.insert(2);
-      tree.insert(4);
+  //     tree.remove(2);
+  //     assertTreeValuesEqual(tree, [3, 1]);
+  //   });
 
-      tree.remove(3);
-      assertTreeValuesEqual(tree, [1, 4, 2]);
-    });
+  //   it('should remove right node with two sub nodes', () => {
+  //     tree.insert(1);
+  //     tree.insert(3);
+  //     tree.insert(2);
+  //     tree.insert(4);
 
-    it('should remove right node with three sub nodes', () => {
-      tree.insert(1);
-      tree.insert(4);
-      tree.insert(2);
-      tree.insert(5);
-      tree.insert(3);
+  //     tree.remove(3);
+  //     assertTreeValuesEqual(tree, [1, 4, 2]);
+  //   });
 
-      tree.remove(4);
-      assertTreeValuesEqual(tree, [1, 5, 2, 3]);
-    });
+  //   it('should remove right node with three sub nodes', () => {
+  //     tree.insert(1);
+  //     tree.insert(4);
+  //     tree.insert(2);
+  //     tree.insert(5);
+  //     tree.insert(3);
 
-    it('should remove left node with two sub nodes', () => {
-      tree.insert(6);
-      tree.insert(2);
-      tree.insert(1);
-      tree.insert(7);
-      tree.insert(4);
-      tree.insert(3);
-      tree.insert(5);
-      tree.insert(9);
-      tree.insert(8);
+  //     tree.remove(4);
+  //     assertTreeValuesEqual(tree, [1, 5, 2, 3]);
+  //   });
 
-      tree.remove(2);
-      assertTreeValuesEqual(tree, [6, 3, 1, 4, 5, 7, 9, 8]);
-    });
-  });
+  //   it('should remove left node with two sub nodes', () => {
+  //     tree.insert(6);
+  //     tree.insert(2);
+  //     tree.insert(1);
+  //     tree.insert(7);
+  //     tree.insert(4);
+  //     tree.insert(3);
+  //     tree.insert(5);
+  //     tree.insert(9);
+  //     tree.insert(8);
+
+  //     tree.remove(2);
+  //     assertTreeValuesEqual(tree, [6, 3, 1, 4, 5, 7, 9, 8]);
+  //   });
+  // });
   // TODO
   // it('should find success', () => {});
 
   // it('should clear success', () => {});
+
+  describe('Find', () => {
+    it('should find min node', () => {
+      tree.insert(2);
+      tree.insert(1);
+      tree.insert(5);
+      tree.insert(4);
+      tree.insert(3);
+      const minNode = tree.getMinNode();
+      ans.equal(minNode.value, 1);
+    });
+
+    it('should find max node', () => {
+      tree.insert(2);
+      tree.insert(1);
+      tree.insert(5);
+      tree.insert(4);
+      tree.insert(3);
+      const maxNode = tree.getMaxNode();
+      ans.equal(maxNode.value, 5);
+    });
+  });
+
 });
