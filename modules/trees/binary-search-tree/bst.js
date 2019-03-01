@@ -3,6 +3,7 @@ class Node {
     this.value = value;
     this.left = null;
     this.right = null;
+    this.parent = null;
   }
 
   insert(value) {
@@ -17,6 +18,7 @@ class Node {
             current = current.left;
           } else {
             current.left = newNode;
+            current.left.parent = current;
             break;
           }
         } else if (value >= current.value) {
@@ -24,6 +26,7 @@ class Node {
             current = current.right;
           } else {
             current.right = newNode;
+            current.right.parent = current;
             break;
           }
         } else {
@@ -33,10 +36,18 @@ class Node {
     }
   }
 
-  _removeOnlyOneLeaf(value) {
-    if (!this.left && !this.right) {
+  removeNoLeaf() {
+    if (!this.parent) {
       this.value = null;
-    } else if (this.left && !this.right) {
+    } else if (this.parent.value > this.value) {
+      this.parent.left = null;
+    } else {
+      this.parent.right = null;
+    }
+  }
+
+  removeOnlyOneLeaf() {
+    if (this.left && !this.right) {
       this.value = this.left.value;
       this.left = null;
     } else if (!this.left && this.right) {
@@ -45,24 +56,29 @@ class Node {
     }
   }
 
-  _removeTwoLeaf(value) {
-
+  removeTwoLeaf() {
+    const leftMax = this.left.getMaxNode().value;
+    this.left.remove(leftMax);
+    this.value = leftMax;
   }
 
-  // remove(value) {
-  //   if (!this.value) {
-  //     return this;
-  //   }
-  //   if (this.value < value) {
-  //     this.right.remove(value);
-  //   } else if (this.value > value) {
-  //     this.left.remove(value);
-  //   } else if (this.left && this.right) {
-  //     this._removeTwoLeaf(value);
-  //   } else {
-  //     this._removeOnlyOneLeaf(value);
-  //   }
-  // }
+  remove(value) {
+    if (!this.value) {
+      return false;
+    }
+    if (this.value < value) {
+      this.right.remove(value);
+    } else if (this.value > value) {
+      this.left.remove(value);
+    } else if (this.left && this.right) {
+      this.removeTwoLeaf();
+    } else if (!this.left && !this.right) {
+      this.removeNoLeaf();
+    } else {
+      this.removeOnlyOneLeaf();
+    }
+    return this;
+  }
 
   // returns null if given value does not exist in the tree
   find() {}
@@ -97,11 +113,11 @@ class Node {
   size() {}
   // returns the height in nodes (single node's height is 1)
   height() {}
-  // returns the minimum value stored in the tree
+  // returns the minimum Node stored in the tree
   getMinNode() {
     return (this.left) ? this.left.getMinNode() : this;
   }
-  // returns the maximum value stored in the tree
+  // returns the maximum Node stored in the tree
   getMaxNode() {
     return (this.right) ? this.right.getMaxNode() : this;
   }
