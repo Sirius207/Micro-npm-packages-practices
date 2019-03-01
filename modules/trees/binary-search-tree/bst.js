@@ -57,9 +57,10 @@ class Node {
   }
 
   removeTwoLeaf() {
-    const leftMax = this.left.getMaxNode().value;
-    this.left.remove(leftMax);
-    this.value = leftMax;
+    const leftMax = this.left.getMaxNode();
+    const leftMaxValue = leftMax.value;
+    leftMax.removeNoLeaf();
+    this.value = leftMaxValue;
   }
 
   remove(value) {
