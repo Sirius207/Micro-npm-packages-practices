@@ -1,5 +1,5 @@
 class Heap {
-  constructor(value) {
+  constructor(value, heapType = 'max') {
     this.value = value;
     this.left = null;
     this.right = null;
@@ -8,7 +8,7 @@ class Heap {
   // needed for insert
   siftUp() {}
 
-  insert(value, heapType = 'max') {}
+  insert(value) {}
 
   // returns the max item, without removing it
   getMax() {}
@@ -33,7 +33,22 @@ class Heap {
   // take an unsorted array and turn it into a sorted array in-place using a max heap
   heapSort() {}
 
-  toArray() {}
+  toArray() {
+    const elements = [];
+    const queue = [];
+    queue.push(this);
+    while (queue.length !== 0) {
+      const current = queue.shift();
+      elements.push(current.value);
+      if (current.left) {
+        queue.push(current.left);
+      }
+      if (current.right) {
+        queue.push(current.right);
+      }
+    }
+    return elements;
+  }
 }
 
 module.exports = Heap;
